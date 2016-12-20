@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
+  xsi:type="MailApp">
+  <Id>7164e750-dc86-49c0-b548-1bac57abdc7c</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>I-Digima</ProviderName>
+  <DefaultLocale>ja-JP</DefaultLocale>
+  <DisplayName DefaultValue="Tracker" />
+  <Description DefaultValue="Tracking using the I-Digima services"/>
+  <IconUrl DefaultValue="https://outlook365.i-digima.com/tracker/assets/images/track_logo_64.png" />
+  <HighResolutionIconUrl DefaultValue="https://outlook365.i-digima.com/tracker/assets/images/track_logo_80.png" />
+  <Hosts>
+    <Host Name="Mailbox" />
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="MailBox" MinVersion="1.1" />
+    </Sets>
+  </Requirements>
+  <!-- These elements support older clients that don't support add-in commands -->
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <!-- NOTE: Just reusing the read taskpane page that is invoked by the button
+             on the ribbon in clients that support add-in commands. You can 
+             use a completely different page if desired -->
+        <SourceLocation DefaultValue="https://localhost:8443/index.html"/>
+        <RequestedHeight>450</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+    <Form xsi:type="ItemEdit">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://localhost:8443/index.html"/>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit" />
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.3">
+        <bt:Set Name="Mailbox" />
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="MailHost">
+
+        <DesktopFormFactor>
+          <FunctionFile resid="functionFile" />
+          
+          <!-- Message compose form -->
+          <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgComposeDemoGroup">
+                <Label resid="groupLabel" />
+                <!-- Task pane button -->
+                <Control xsi:type="Button" id="msgComposeOpenPaneButton">
+                  <Label resid="paneComposeButtonLabel" />
+                  <Supertip>
+                    <Title resid="paneComposeSuperTipTitle" />
+                    <Description resid="paneComposeSuperTipDescription" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="track_logo_16" />
+                    <bt:Image size="32" resid="track_logo_32" />
+                    <bt:Image size="80" resid="track_logo_80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="composeTaskPaneUrl" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+          
+          <!-- Message read form -->
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadDemoGroup">
+                <Label resid="groupLabel" />
+                <!-- Task pane button -->
+                <Control xsi:type="Button" id="msgReadOpenPaneButton">
+                  <Label resid="paneReadButtonLabel" />
+                  <Supertip>
+                    <Title resid="paneReadSuperTipTitle" />
+                    <Description resid="paneReadSuperTipDescription" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="track_logo_16" />
+                    <bt:Image size="32" resid="track_logo_32" />
+                    <bt:Image size="80" resid="track_logo_80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="readTaskPaneUrl" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="track_logo_16" DefaultValue="https://outlook365.i-digima.com/tracker/assets/images/track_logo_16.png"/>
+        <bt:Image id="track_logo_32" DefaultValue="https://outlook365.i-digima.com/tracker/assets/images/track_logo_32.png"/>
+        <bt:Image id="track_logo_80" DefaultValue="https://outlook365.i-digima.com/tracker/assets/images/track_logo_80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="functionFile" DefaultValue="https://localhost:8443/index.html"/>
+        <bt:Url id="readTaskPaneUrl" DefaultValue="https://localhost:8443/index.html"/>
+        <bt:Url id="composeTaskPaneUrl" DefaultValue="https://localhost:8443/index.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="I-Digima"/>
+        <!-- Compose mode -->
+        <bt:String id="paneComposeButtonLabel" DefaultValue="Track"/>
+        <bt:String id="paneComposeSuperTipTitle" DefaultValue="Tracker"/>
+
+        <!-- Read mode -->
+        <bt:String id="paneReadButtonLabel" DefaultValue="Track"/>
+        <bt:String id="paneReadSuperTipTitle" DefaultValue="Tracker"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <!-- Compose mode -->
+        <bt:String id="paneComposeSuperTipDescription" DefaultValue="Tracking using the I-Digima service"/>
+
+        <!-- Read mode -->
+        <bt:String id="paneReadSuperTipDescription" DefaultValue="Tracking using the I-Digima service"/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
