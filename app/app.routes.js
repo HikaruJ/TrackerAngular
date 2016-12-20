@@ -16,6 +16,14 @@
                 url: '/idigima'
             })
 
+        .state('outlook365', {
+            data: {
+                css: 'app/components/outlook365/outlook365.css'
+            },
+            template: '<outlook365></outlook365>',
+            url: '/outlook365'
+        })
+
         .state('home', {
             data: {
                 css: 'app/components/home/home.css'
