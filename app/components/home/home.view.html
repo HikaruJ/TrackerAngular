@@ -1,25 +1,25 @@
 <main class="ms-firstrun-value">
     <section class="ms-firstrun-value__header ms-bgColor-themePrimary">
         <div class="ms-firstrun-value__logo">
-            <img data-ng-src="{{$ctrl.viewModel.baseUrl}}assets/images/iDigima_white_logo.png" />
+            <img data-ng-src="{{$ctrl.viewModel.baseUrl}}/assets/images/iDigima_white_logo.png" />
         </div>
         <div class="ms-firstrun-value__title">
-            <h1 class="ms-font-xl ms-fontWeight-light ms-fontColor-white">{{$ctrl.viewModel.content.title}}</h1>
+            <h1 class="ms-font-xl ms-fontWeight-light ms-fontColor-white">{{'home.page.title' | translate}}</h1>
         </div>
         <div class="ms-firstrun-value__subtitle ms-font-m ms-fontWeight-light ms-fontColor-white">
-            <p>{{$ctrl.viewModel.content.description}}</p>
+            <p>{{'home.page.description' | translate}}</p>
         </div>
     </section>
     <section class="ms-firstrun-value__content">
         <div class="ms-font-m ms-fontColor-themePrimary ms-firstrun-value__content--centered ">
             <ul class="ms-firstrun-value__list ms-fontWeight-regular ">
-                <li><span><i class="ms-Icon enlarge ms-Icon--coffee"></i>Helps you produce fast</span></li>
-                <li><span><i class="ms-Icon enlarge ms-Icon--ribbon"></i>Adds value to your work</span></li>
-                <li><span><i class="ms-Icon enlarge ms-Icon--glasses"></i>Enables you to be creative</span></li>
+                <li><span><i class="ms-Icon enlarge ms-Icon--coffee"></i>{{ 'home.page.features.item1' | translate }}</span></li>
+                <li><span><i class="ms-Icon enlarge ms-Icon--ribbon"></i>{{ 'home.page.features.item2' | translate }}</span></li>
+                <li><span><i class="ms-Icon enlarge ms-Icon--glasses"></i>{{ 'home.page.features.item3' | translate }}</span></li>
             </ul>
-            <button class="ms-firstrun-value__action--primary ms-bgColor-themePrimary ms-Button ms-Button--command ms-fontColor-white ms-font-m" data-ui-sref="idigima" id="getStarted">
-                    <span class="ms-Button-label">{{$ctrl.viewModel.content.submitButtonLabel}}</span>
-                    <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--chevronThickRight "></i></span>
+            <button class="ms-firstrun-value__action--primary ms-bgColor-themePrimary ms-Button ms-Button--command ms-fontColor-white ms-font-m" data-ui-sref="activation.idigima" id="getStarted">
+                    <span class="ms-Button-label">{{'home.buttons.submit.caption' | translate}}</span>
+                    <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--chevronThickRight"></i></span>
                 </button>
         </div>
     </section>

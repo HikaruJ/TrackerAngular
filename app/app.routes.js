@@ -8,28 +8,34 @@
         $urlRouterProvider.otherwise('/home');
 
         $stateProvider
-            .state('idigima', {
+            .state('activation', {
+                abstract: true,
+                templateUrl: 'app/activation/activation.view.html',
+                url: '/activation'
+            })
+            .state('activation.idigima', {
                 data: {
-                    css: 'app/components/idigima/idigima.css'
+                    css: 'app/components/activation/idigima/idigima.css'
                 },
+                name: 'idigima',
                 template: '<idigima></idigima>',
                 url: '/idigima'
             })
-
-        .state('outlook365', {
-            data: {
-                css: 'app/components/outlook365/outlook365.css'
-            },
-            template: '<outlook365></outlook365>',
-            url: '/outlook365'
-        })
-
-        .state('home', {
-            data: {
-                css: 'app/components/home/home.css'
-            },
-            template: '<home></home>',
-            url: '/home'
-        });
+            .state('activation.outlook365', {
+                data: {
+                    css: 'app/components/activation/outlook365/outlook365.css'
+                },
+                name: 'outlook365',
+                template: '<outlook365></outlook365>',
+                url: '/outlook365'
+            })
+            .state({
+                data: {
+                    css: 'app/components/home/home.css'
+                },
+                name: 'home',
+                template: '<home></home>',
+                url: '/home'
+            });
     }
 })(window.angular);

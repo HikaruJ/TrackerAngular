@@ -1,0 +1,42 @@
+<div class="ms-font-l ms-navigation-back-button">
+    <main class="ms-navigation-back-button__main">
+        <section class="ms-navigation-back-button__header">
+            <div class="ms-navigation-back-button__header--left" id="backButton">
+                <i class="ms-Icon ms-Icon--chevronThickLeft ms-fontColor-neutralPrimary"></i>
+            </div>
+            <div class="ms-navigation-back-button__header--right ms-font-xl ms-fontWeight-light"></div>
+        </section>
+
+        <section class="ms-navigation-back-button__content ms-font-m ms-fontColor-neutralPrimary">
+            <div class="ms-Grid-row">
+                <p class="ms-font-xxl"><b>{{ 'activation.outlook365.page.title' | translate }}</b></p>
+                <p class="ms-font-l">{{ 'activation.outlook365.page.description' | translate }}</p>
+            </div>
+
+            <div class="ms-Grid-row" style="margin-top:20px;">
+                <div class="ms-Grid-col ms-u-sm12">
+                    <img data-ng-src="{{$ctrl.viewModel.baseUrl}}/assets/images/office365_logo.png"></img>
+                </div>
+            </div>
+            <div class="ms-Grid-row" style="margin-bottom:20px;">
+                <div class="ms-Grid-col ms-u-sm12">
+                    <button id="btnSignIn" class="ms-Button ms-Button--primary" data-ng-click="$ctrl.openIDigimaLogin()" style="width:150px;">
+                        <span class="ms-Button-label" id="btnSignInLabel">{{ 'activation.outlook365.buttons.signIn.caption' | translate}}</span>
+                    </button>
+                </div>
+            </div>
+            <button aria-labelledby="btnContinue" aria-describedby="btnContinue" class="ms-Button ms-Button--compound" data-ng-disabled="!$ctrl.viewModel.proceedToNextStep" id="btnContinue">
+                <span class=" ms-Button-label" id="btnContinueLabel">{{ 'activation.outlook365.buttons.continue.caption' | translate}}</span>
+                <span class="ms-Button-description" id="btnContinueDescriptionLabel">{{ 'activation.outlook365.buttons.continue.description' | translate}}</span>
+            </button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="ms-navigation-back-button__footer ms-bgColor-themePrimary">
+        <div class="ms-navigation-back-button__footer--left">
+            <img data-ng-src="{{$ctrl.viewModel.baseUrl}}/assets/images/track_logo_32.png" />
+            <h1 class="ms-font-xl ms-fontWeight-semilight ms-fontColor-white " id="logoName">{{ 'app.title' | translate }}</h1>
+        </div>
+    </footer>
+</div>

@@ -5,25 +5,24 @@
 
     trackAddin.component('home', {
         bindings: {},
-        controller: HomeController,
+        controller: ['$location', 'angularConfig', HomeController],
         templateUrl: 'app/components/home/home.view.html'
     });
 
-    function HomeController(angularConfig) {
-        debugger;
-        //The Office initialize function must be run each time a new page is loaded
-        Office.initialize = function(reason) {
-            app.initialize();
-        };
-
+    function HomeController($location, angularConfig) {
         var ctrl = this;
-        ctrl.viewModel = {
-            baseUrl: angularConfig.baseUrl,
-            content: {
-                description: 'This add-in helps you be productive at work!',
-                title: 'WELCOME',
-                submitButtonLabel: 'Get Started!'
-            }
+
+        ctrl.$onInit = () => {
+            Office.context.mailbox.getUserIdentityTokenAsync(saveToken);
+
+            ctrl.viewModel = {
+                baseUrl: angularConfig.baseUrl,
+                component: $location.search().component
+            };
         };
+    }
+
+    function saveToken(asyncResult) {
+        var token = asyncResult.value;
     }
 }(window.angular));

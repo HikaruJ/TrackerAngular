@@ -2,7 +2,7 @@
     "use strict";
 
     var config = {
-        baseUrl: "https://localhost:8443/"
+        baseUrl: "https://localhost:8443"
     };
 
     var trackAddin = angular.module('trackerAddin');

@@ -5,21 +5,18 @@
 
     trackAddin.component('outlook365', {
         bindings: {},
-        controller: Outlook365Controller,
-        templateUrl: 'app/components/outlook365/outlook365.view.html'
+        controller: ['angularConfig', Outlook365Controller],
+        templateUrl: 'app/components/activation/outlook365/outlook365.view.html'
     });
 
     function Outlook365Controller(angularConfig) {
-        debugger;
-        //The Office initialize function must be run each time a new page is loaded
-        Office.initialize = function(reason) {
-            app.initialize();
-        };
-
         var ctrl = this;
-        ctrl.viewModel = {
-            baseUrl: angularConfig.baseUrl,
-            proceedToNextStep: false
+
+        ctrl.$onInit = () => {
+            ctrl.viewModel = {
+                baseUrl: angularConfig.baseUrl,
+                proceedToNextStep: false
+            };
         };
 
         ctrl.openOffice365Login = function() {

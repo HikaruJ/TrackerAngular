@@ -1,0 +1,51 @@
+{
+    "activation": {
+        "idigima": {
+            "buttons": {
+                "continue": {
+                    "caption": "Continue",
+                    "description": "Proceed to Sign-In to Outlook365"
+                },
+                "signIn": {
+                    "caption": "Sign-In"
+                }
+            },
+            "page": {
+                "description": "Please register/connect to the I-Digima service, In order to proceed with the activation process.",
+                "title": "Step1 - Instructions"
+            }
+        },
+        "outlook365": {
+            "buttons": {
+                "continue": {
+                    "caption": "Continue",
+                    "description": "Activate the Add-In"
+                }
+            },
+            "page": {
+                "description": "Please register/connect to the Office365 service, In order to proceed with the activation process.",
+                "title": "Step2 - Instructions"
+            }
+        }
+    },
+    "app": {
+        "title": "Tracker"
+    },
+    "home": {
+        "buttons": {
+            "submit": {
+                "caption": "Get Started!",
+                "description": "Activate the Add-In"
+            }
+        },
+        "page": {
+            "description": "This add-in helps you be productive at work!",
+            "features": {
+                "item1": "Helps you produce fast",
+                "item2": "Adds value to your work",
+                "item3": "Enables you to be creative"
+            },
+            "title": "WELCOME"
+        }
+    }
+}
