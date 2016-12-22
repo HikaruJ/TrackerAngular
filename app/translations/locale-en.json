@@ -20,6 +20,9 @@
                 "continue": {
                     "caption": "Continue",
                     "description": "Activate the Add-In"
+                },
+                "signIn": {
+                    "caption": "Sign-In"
                 }
             },
             "page": {

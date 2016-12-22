@@ -21,6 +21,9 @@
 
          //Initialize translations
          var mailDisplayLanguage = Office.context.displayLanguage.substring(0, 2);
+         if (mailDisplayLanguage === "" || mailDisplayLanguage === undefined || mailDisplayLanguage === null) {
+             mailDisplayLanguage = "jp";
+         }
 
          $translateProvider.useStaticFilesLoader({
              prefix: 'app/translations/locale-',

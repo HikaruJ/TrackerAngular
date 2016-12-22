@@ -17,10 +17,10 @@
                 <li><span><i class="ms-Icon enlarge ms-Icon--ribbon"></i>{{ 'home.page.features.item2' | translate }}</span></li>
                 <li><span><i class="ms-Icon enlarge ms-Icon--glasses"></i>{{ 'home.page.features.item3' | translate }}</span></li>
             </ul>
-            <button class="ms-firstrun-value__action--primary ms-bgColor-themePrimary ms-Button ms-Button--command ms-fontColor-white ms-font-m" data-ui-sref="activation.idigima" id="getStarted">
-                    <span class="ms-Button-label">{{'home.buttons.submit.caption' | translate}}</span>
-                    <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--chevronThickRight"></i></span>
-                </button>
+            <button class="ms-firstrun-value__action--primary ms-bgColor-themePrimary ms-Button ms-Button--command ms-fontColor-white ms-font-m" data-ui-sref="activation.outlook365" data-ng-disabled="$ctrl.viewModel.disableSubmitButton" id="btnSubmit">
+                <span class="ms-Button-label" id="btnSubmitLabel">{{'home.buttons.submit.caption' | translate}}</span>
+                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--chevronThickRight"></i></span>
+            </button>
         </div>
     </section>
 </main>

@@ -5,11 +5,13 @@
 
     trackAddin.component('home', {
         bindings: {},
-        controller: ['$location', 'angularConfig', HomeController],
+        controller: HomeController,
         templateUrl: 'app/components/home/home.view.html'
     });
 
-    function HomeController($location, angularConfig) {
+    HomeController.$inject = ['$location', 'angularConfig', 'usersService'];
+
+    function HomeController($location, angularConfig, usersService) {
         var ctrl = this;
 
         ctrl.$onInit = () => {
@@ -17,12 +19,18 @@
 
             ctrl.viewModel = {
                 baseUrl: angularConfig.baseUrl,
-                component: $location.search().component
+                component: $location.search().component,
+                disableSubmitButton: true
             };
         };
-    }
 
-    function saveToken(asyncResult) {
-        var token = asyncResult.value;
+        function saveToken(asyncResult) {
+            var outlookId = asyncResult.value;
+            usersService.saveUser(outlookId);
+            // .then(function() {
+            //     debugger;
+            //     ctrl.viewModel.disableSubmitButton = false;
+            // });
+        }
     }
 }(window.angular));
