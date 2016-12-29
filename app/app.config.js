@@ -9,9 +9,6 @@
          $httpProvider.defaults.useXDomain = true;
          delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
-         // Remove the '#' from the URL.
-         // $locationProvider.html5Mode(true).hashPrefix('!');
-
          // Remove spinner from loading bar.
          cfpLoadingBarProvider.includeSpinner = false;
 

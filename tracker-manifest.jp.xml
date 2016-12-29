@@ -9,7 +9,7 @@
   <Id>7164e750-dc86-49c0-b548-1bac57abdc7c</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>I-Digima</ProviderName>
-  <DefaultLocale>en-US</DefaultLocale>
+  <DefaultLocale>ja-JP</DefaultLocale>
   <DisplayName DefaultValue="Tracker" />
   <Description DefaultValue="Tracking using the I-Digima services"/>
   <IconUrl DefaultValue="https://outlook365.i-digima.com/tracker/assets/images/track_logo_64.png" />

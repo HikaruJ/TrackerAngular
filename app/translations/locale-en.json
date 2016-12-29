@@ -41,6 +41,9 @@
                 "description": "Activate the Add-In"
             }
         },
+        "errors": {
+            "saveUserFailure": "Error in initialzing the add-in, please contact support for further help."
+        },
         "page": {
             "description": "This add-in helps you be productive at work!",
             "features": {

@@ -1,9 +1,7 @@
 <div class="ms-font-l ms-navigation-back-button">
     <main class="ms-navigation-back-button__main">
         <section class="ms-navigation-back-button__header">
-            <div class="ms-navigation-back-button__header--left" id="backButton">
-                <i class="ms-Icon ms-Icon--chevronThickLeft ms-fontColor-neutralPrimary"></i>
-            </div>
+            <div style="height:40px"></div>
             <div class="ms-navigation-back-button__header--right ms-font-xl ms-fontWeight-light"></div>
         </section>
 
@@ -15,7 +13,7 @@
 
             <div class="ms-Grid-row" style="margin-top:20px;">
                 <div class="ms-Grid-col ms-u-sm12">
-                    <img data-ng-src="{{$ctrl.viewModel.baseUrl}}/assets/images/iDigima_logo.png"></img>
+                    <img data-ng-src="{{$ctrl.viewModel.clientUrl}}/assets/images/iDigima_logo.png"></img>
                 </div>
             </div>
             <div class="ms-Grid-row" style="margin-bottom:20px;">
@@ -25,7 +23,7 @@
                     </button>
                 </div>
             </div>
-            <button aria-labelledby="btnContinue" aria-describedby="btnContinue" class="ms-Button ms-Button--compound" data-ng-disabled="!$ctrl.viewModel.proceedToNextStep" data-ui-sref="activation.outlook365" id="btnContinue">
+            <button aria-labelledby="btnContinue" aria-describedby="btnContinue" class="ms-Button ms-Button--compound" data-ng-disabled="!$ctrl.viewModel.proceedToNextStep" data-ui-sref="activation.outlook365({userId: $ctrl.viewModel.userId})" id="btnContinue">
                 <span class=" ms-Button-label" id="btnContinueLabel">{{ 'activation.idigima.buttons.continue.caption' | translate }}</span>
                 <span class="ms-Button-description" id="btnContinueDescriptionLabel">{{ 'activation.idigima.buttons.continue.description' | translate }}</span>
             </button>
@@ -35,7 +33,7 @@
     <!-- Footer -->
     <footer class="ms-navigation-back-button__footer ms-bgColor-themePrimary">
         <div class="ms-navigation-back-button__footer--left">
-            <img data-ng-src="{{$ctrl.viewModel.baseUrl}}/assets/images/track_logo_32.png" />
+            <img data-ng-src="{{$ctrl.viewModel.clientUrl}}/assets/images/track_logo_32.png" />
             <h1 class="ms-font-xl ms-fontWeight-semilight ms-fontColor-white" id="logoName">{{ 'app.title' | translate }}</h1>
         </div>
     </footer>

@@ -19,7 +19,7 @@
                 },
                 name: 'idigima',
                 template: '<idigima></idigima>',
-                url: '/idigima'
+                url: '/idigima/:userId'
             })
             .state('activation.outlook365', {
                 data: {
@@ -27,13 +27,16 @@
                 },
                 name: 'outlook365',
                 template: '<outlook365></outlook365>',
-                url: '/outlook365'
+                url: '/outlook365/:userId'
             })
             .state({
                 data: {
                     css: 'app/components/home/home.css'
                 },
                 name: 'home',
+                params: {
+                    showError: false
+                },
                 template: '<home></home>',
                 url: '/home'
             });

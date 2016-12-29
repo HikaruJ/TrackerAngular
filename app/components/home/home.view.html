@@ -1,7 +1,7 @@
 <main class="ms-firstrun-value">
     <section class="ms-firstrun-value__header ms-bgColor-themePrimary">
         <div class="ms-firstrun-value__logo">
-            <img data-ng-src="{{$ctrl.viewModel.baseUrl}}/assets/images/iDigima_white_logo.png" />
+            <img data-ng-src="{{$ctrl.viewModel.clientUrl}}/assets/images/iDigima_white_logo.png" />
         </div>
         <div class="ms-firstrun-value__title">
             <h1 class="ms-font-xl ms-fontWeight-light ms-fontColor-white">{{'home.page.title' | translate}}</h1>
@@ -17,9 +17,13 @@
                 <li><span><i class="ms-Icon enlarge ms-Icon--ribbon"></i>{{ 'home.page.features.item2' | translate }}</span></li>
                 <li><span><i class="ms-Icon enlarge ms-Icon--glasses"></i>{{ 'home.page.features.item3' | translate }}</span></li>
             </ul>
-            <button class="ms-firstrun-value__action--primary ms-bgColor-themePrimary ms-Button ms-Button--command ms-fontColor-white ms-font-m" data-ui-sref="activation.outlook365" data-ng-disabled="$ctrl.viewModel.disableSubmitButton" id="btnSubmit">
-                <span class="ms-Button-label" id="btnSubmitLabel">{{'home.buttons.submit.caption' | translate}}</span>
-                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--chevronThickRight"></i></span>
+            <div class="ms-firstrun-value__subtitle ms-font-m ms-fontWeight-light ms-fontColor-red" data-ng-if="$ctrl.viewModel.showError">
+                <p>{{'home.errors.saveUserFailure' | translate}}</p>
+            </div>
+            <button class="ms-firstrun-value__action--primary ms-bgColor-themePrimary ms-Button ms-Button--command ms-fontColor-white ms-font-m" data-ui-sref="activation.outlook365({userId: $ctrl.viewModel.userId})" data-ng-disabled="$ctrl.viewModel.disableSubmitButton"
+                id="btnSubmit">
+                <span class="ms-Button-label" id="btnSubmitLabel ">{{'home.buttons.submit.caption' | translate}}</span>
+                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--chevronThickRight "></i></span>
             </button>
         </div>
     </section>

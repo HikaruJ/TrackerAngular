@@ -5,30 +5,38 @@
 
     trackAddin.component('idigima', {
         bindings: {},
-        controller: ['angularConfig', IDigimaController],
+        controller: IDigimaController,
         templateUrl: 'app/components/activation/idigima/idigima.view.html'
     });
 
-    function IDigimaController(angularConfig) {
+    IDigimaController.$inject = ["$http", "$httpParamSerializerJQLike", "$scope", "$state", "$stateParams", "angularConfig", "angularRoutes", "idigimaConfig", "idigimaService"];
+
+    function IDigimaController($http, $httpParamSerializerJQLike, $scope, $state, $stateParams, angularConfig, angularRoutes, idigimaConfig, idigimaService) {
         var ctrl = this;
+
+        var userId = $stateParams.userId;
+        if (userId === null || userId === "" || userId === undefined) {
+            $state.go(angularRoutes.home, { showError: true });
+        }
 
         ctrl.$onInit = () => {
             ctrl.viewModel = {
-                baseUrl: angularConfig.baseUrl,
-                proceedToNextStep: false
+                clientUrl: angularConfig.clientUrl,
+                proceedToNextStep: false,
+                userId: userId
             };
         };
 
         ctrl.openIDigimaLogin = function() {
-            var uri = "https://www.i-digima.com/login/token?redirect_uri=" + ctrl.viewModel.baseUrl;
+            var redirect_uri = angularConfig.serverUrl + "/iDigima/authenticate";
+            var uri = idigimaConfig.tokenUrl + redirect_uri;
 
             var popup = window.open(uri, 'AuthPopup', 'width=500,height=500,centerscreen=1,menubar=0,toolbar=0,location=0,personalbar=0,status=0,titlebar=0,dialog=1');
-            var popupTick = setInterval(function() {
-                if (popup.closed) {
-                    clearInterval(popupTick);
-                    console.log('window closed!');
-                }
-            }, 500);
+            idigimaService.isTokenValid(userId);
         };
+
+        idigimaService.subscribe($scope, function somethingChanged() {
+            ctrl.viewModel.proceedToNextStep = true;
+        });
     }
 }(window.angular));
