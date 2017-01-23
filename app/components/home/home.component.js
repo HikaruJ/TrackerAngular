@@ -9,29 +9,32 @@
         templateUrl: 'app/components/home/home.view.html'
     });
 
-    HomeController.$inject = ['$location', '$stateParams', 'angularConfig', 'usersService'];
+    HomeController.$inject = ['$location', '$scope', '$state', '$stateParams', 'angularConfig', 'angularRoutes', 'redirectService', 'usersService'];
 
-    function HomeController($location, $stateParams, angularConfig, usersService) {
+    function HomeController($location, $scope, $state, $stateParams, angularConfig, angularRoutes, redirectService, usersService) {
         var ctrl = this;
+        var email = Office.context.mailbox.userProfile.emailAddress;
 
         var showError = $stateParams.showError;
 
         ctrl.$onInit = () => {
-            if (showError === false) {
-                Office.context.mailbox.getUserIdentityTokenAsync(saveToken);
-            }
+            var redirectResult = redirectService.redirectFromHome();
+            if (!redirectResult) {
+                if (showError === false) {
+                    Office.context.mailbox.getUserIdentityTokenAsync(saveToken);
+                }
 
-            ctrl.viewModel = {
-                clientUrl: angularConfig.clientUrl,
-                component: $location.search().component,
-                disableSubmitButton: true,
-                showError: showError,
-                userId: ''
-            };
+                ctrl.viewModel = {
+                    clientUrl: angularConfig.clientUrl,
+                    component: $location.search().component,
+                    disableSubmitButton: true,
+                    showError: showError,
+                    userId: ''
+                };
+            }
         };
 
         function saveToken(asyncResult) {
-            var email = Office.context.mailbox.userProfile.emailAddress;
             var outlookId = asyncResult.value;
 
             usersService.saveUser(email, outlookId)

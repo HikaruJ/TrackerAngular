@@ -1,5 +1,11 @@
 {
     "activation": {
+        "activated": {
+            "page": {
+                "description": "The Tracker Add-in as been succesfully activated.",
+                "title": "Activated"
+            }
+        },
         "idigima": {
             "buttons": {
                 "continue": {
@@ -12,7 +18,7 @@
             },
             "page": {
                 "description": "Please register/connect to the I-Digima service, In order to proceed with the activation process.",
-                "title": "Step1 - Instructions"
+                "title": "IDigima Login Instructions"
             }
         },
         "outlook365": {
@@ -24,7 +30,7 @@
             },
             "page": {
                 "description": "Please register/connect to the Office365 service, In order to proceed with the activation process.",
-                "title": "Step2 - Instructions"
+                "title": "Office365 Login Instructions"
             }
         }
     },

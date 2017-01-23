@@ -2,11 +2,12 @@
     "use strict";
 
     var angularConfig = {
-        clientUrl: "https://localhost:8443",
-        serverUrl: "https://4e629599.ngrok.io/api"
+        clientUrl: "https://localhost:8000",
+        serverUrl: "https://e6f620dc.ngrok.io/api"
     };
 
     var angularRoutes = {
+        activated: "activation.activated",
         home: "home",
         idigima: "activation.idigima",
         outlook365: "activation.outlook365"
