@@ -10,12 +10,12 @@
         $stateProvider
             .state('activation', {
                 abstract: true,
-                templateUrl: 'app/activation/activation.view.html',
+                templateUrl: 'tracker/app/components/activation/activation.view.html',
                 url: '/activation'
             })
             .state('activation.activated', {
                 data: {
-                    css: 'app/components/activation/activated/activated.css'
+                    css: 'tracker/app/components/activation/activated/activated.css'
                 },
                 name: 'activated',
                 params: {
@@ -26,7 +26,7 @@
             })
             .state('activation.idigima', {
                 data: {
-                    css: 'app/components/activation/idigima/idigima.css'
+                    css: 'tracker/app/components/activation/idigima/idigima.css'
                 },
                 name: 'idigima',
                 params: {
@@ -37,7 +37,7 @@
             })
             .state('activation.outlook365', {
                 data: {
-                    css: 'app/components/activation/outlook365/outlook365.css'
+                    css: 'tracker/app/components/activation/outlook365/outlook365.css'
                 },
                 name: 'outlook365',
                 params: {
@@ -48,7 +48,7 @@
             })
             .state({
                 data: {
-                    css: 'app/components/home/home.css'
+                    css: 'tracker/app/components/home/home.css'
                 },
                 name: 'home',
                 params: {

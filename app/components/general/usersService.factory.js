@@ -38,7 +38,18 @@
                 .catch(checkActivationFlowFailed);
 
             function checkActivationFlowComplete(response) {
-                return response.data;
+                if (response.data !== null && response.data !== undefined) {
+                    var data = response.data;
+                    if (!data.userExists) {
+                        $log.error(data.message);
+                    }
+
+                    return data;
+                } else {
+                    $log.error("response data is undefined");
+                }
+
+                return null;
             }
 
             function checkActivationFlowFailed(error) {
@@ -66,7 +77,18 @@
                 .catch(saveUserFailed);
 
             function saveUserComplete(response) {
-                return response.data;
+                if (response.data !== null && response.data !== undefined) {
+                    var data = response.data;
+                    if (!data.isExists) {
+                        $log.error(data.message);
+                    }
+
+                    return data.result;
+                } else {
+                    $log.error("response data is undefined");
+                }
+
+                return null;
             }
 
             function saveUserFailed(error) {

@@ -6,7 +6,7 @@
     trackAddin.component('idigima', {
         bindings: {},
         controller: IDigimaController,
-        templateUrl: 'app/components/activation/idigima/idigima.view.html'
+        templateUrl: 'tracker/app/components/activation/idigima/idigima.view.html'
     });
 
     IDigimaController.$inject = ['$scope', '$state', '$stateParams', 'angularConfig', 'angularRoutes', 'idigimaConfig', 'idigimaService', 'redirectService'];

@@ -2,15 +2,15 @@
     "use strict";
 
     var trackAddin = angular.module('trackerAddin');
-    trackAddin.factory('idigimaService', idigimaService);
+    trackAddin.factory('office365Service', office365Service);
 
-    idigimaService.$inject = ['$http', '$httpParamSerializerJQLike', '$interval', '$log', '$rootScope', 'angularConfig'];
+    office365Service.$inject = ['$http', '$httpParamSerializerJQLike', '$interval', '$log', '$rootScope', 'angularConfig'];
 
-    function idigimaService($http, $httpParamSerializerJQLike, $interval, $log, $rootScope, angularConfig) {
+    function office365Service($http, $httpParamSerializerJQLike, $interval, $log, $rootScope, angularConfig) {
         var cancelPromise;
 
         var urls = {
-            isTokenValid: '/idigima/isTokenValid'
+            isTokenValid: '/office365/isTokenValid'
         };
 
         var service = {
@@ -43,7 +43,7 @@
                     if (response.data !== null && response.data !== undefined) {
                         var data = response.data;
                         if (data.isValid) {
-                            $rootScope.$emit('idigima-service-event');
+                            $rootScope.$emit('office365-service-event');
                             $interval.cancel(cancelPromise);
                         } else {
                             $log.error(data.message);
@@ -57,11 +57,11 @@
                     $log.error('XHR Failed for saveUser.' + error.data);
                     $interval.cancel(cancelPromise);
                 }
-            }, 5000);
+            }, 20000);
         }
 
         function subscribe(scope, callback) {
-            var handler = $rootScope.$on('idigima-service-event', callback);
+            var handler = $rootScope.$on('office365-service-event', callback);
             scope.$on('$destroy', handler);
         }
     }

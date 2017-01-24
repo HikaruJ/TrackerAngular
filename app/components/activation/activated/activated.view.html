@@ -1,0 +1,23 @@
+<div class="ms-font-l ms-navigation-back-button">
+    <main class="ms-navigation-back-button__main">
+        <section class="ms-navigation-back-button__header">
+            <div style="height:40px"></div>
+            <div class="ms-navigation-back-button__header--right ms-font-xl ms-fontWeight-light"></div>
+        </section>
+
+        <section class="ms-navigation-back-button__content ms-font-m ms-fontColor-neutralPrimary">
+            <div class="ms-Grid-row">
+                <p class="ms-font-xxl"><b>{{ 'activation.activated.page.title' | translate }}</b></p>
+                <p class="ms-font-l">{{ 'activation.activated.page.description' | translate }}</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="ms-navigation-back-button__footer ms-bgColor-themePrimary">
+        <div class="ms-navigation-back-button__footer--left">
+            <img data-ng-src="{{$ctrl.viewModel.clientUrl}}/assets/images/track_logo_32.png" />
+            <h1 class="ms-font-xl ms-fontWeight-semilight ms-fontColor-white" id="logoName">{{ 'app.title' | translate }}</h1>
+        </div>
+    </footer>
+</div>

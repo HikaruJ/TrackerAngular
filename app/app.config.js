@@ -23,9 +23,10 @@
          }
 
          $translateProvider.useStaticFilesLoader({
-             prefix: 'app/translations/locale-',
+             prefix: 'tracker/app/translations/locale-',
              suffix: '.json'
          });
+
          $translateProvider.preferredLanguage(mailDisplayLanguage);
      }
  })(window.angular);

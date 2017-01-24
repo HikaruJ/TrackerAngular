@@ -6,7 +6,7 @@
     trackAddin.component('home', {
         bindings: {},
         controller: HomeController,
-        templateUrl: 'app/components/home/home.view.html'
+        templateUrl: 'tracker/app/components/home/home.view.html'
     });
 
     HomeController.$inject = ['$location', '$scope', '$state', '$stateParams', 'angularConfig', 'angularRoutes', 'redirectService', 'usersService'];
@@ -44,6 +44,7 @@
                     } else {
                         ctrl.viewModel.disableSubmitButton = false;
                         ctrl.viewModel.userId = result;
+                        redirectService.userId = result;
                     }
                 });
         }

@@ -6,7 +6,7 @@
     trackAddin.component('outlook365', {
         bindings: {},
         controller: Outlook365Controller,
-        templateUrl: 'app/components/activation/outlook365/outlook365.view.html'
+        templateUrl: 'tracker/app/components/activation/outlook365/outlook365.view.html'
     });
 
     Outlook365Controller.$inject = ['$scope', '$state', '$stateParams', 'angularConfig', 'angularRoutes', 'office365Config', 'office365Service'];

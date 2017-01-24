@@ -2,8 +2,8 @@
     "use strict";
 
     var angularConfig = {
-        clientUrl: "https://localhost:8000",
-        serverUrl: "https://e6f620dc.ngrok.io/api"
+        clientUrl: "https://outlook365.i-digima.com/tracker",
+        serverUrl: "https://dev.motivo.jp/trackerAPI/api"
     };
 
     var angularRoutes = {
