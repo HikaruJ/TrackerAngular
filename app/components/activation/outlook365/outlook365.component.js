@@ -22,7 +22,6 @@
         ctrl.$onInit = () => {
             ctrl.viewModel = {
                 clientUrl: angularConfig.clientUrl,
-                proceedToNextStep: false,
                 serverUrl: angularConfig.serverUrl
             };
         };

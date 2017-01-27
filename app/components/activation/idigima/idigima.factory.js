@@ -54,7 +54,7 @@
                 }
 
                 function isTokenValidFailed(error) {
-                    $log.error('XHR Failed for saveUser.' + error.data);
+                    $log.error('XHR Failed for isTokenValid.' + error.data);
                     $interval.cancel(cancelPromise);
                 }
             }, 5000);

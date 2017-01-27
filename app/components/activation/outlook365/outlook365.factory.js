@@ -10,17 +10,17 @@
         var cancelPromise;
 
         var urls = {
-            isTokenValid: '/office365/isTokenValid'
+            isSubscriptionValid: '/office365/isSubscriptionValid'
         };
 
         var service = {
-            isTokenValid: isTokenValid,
+            isSubscriptionValid: isSubscriptionValid,
             subscribe: subscribe
         };
 
         return service;
 
-        function isTokenValid(userId) {
+        function isSubscriptionValid(userId) {
             cancelPromise = $interval(function() {
                 var data = {
                     userId: userId
@@ -28,7 +28,7 @@
 
                 var request = {
                     method: 'POST',
-                    url: angularConfig.serverUrl + urls.isTokenValid,
+                    url: angularConfig.serverUrl + urls.isSubscriptionValid,
                     data: $httpParamSerializerJQLike(data),
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -36,10 +36,10 @@
                 };
 
                 $http(request)
-                    .then(isTokenValidComplete)
-                    .catch(isTokenValidFailed);
+                    .then(isSubscriptionValidComplete)
+                    .catch(isSubscriptionValidFailed);
 
-                function isTokenValidComplete(response) {
+                function isSubscriptionValidComplete(response) {
                     if (response.data !== null && response.data !== undefined) {
                         var data = response.data;
                         if (data.isValid) {
@@ -53,11 +53,11 @@
                     }
                 }
 
-                function isTokenValidFailed(error) {
-                    $log.error('XHR Failed for saveUser.' + error.data);
+                function isSubscriptionValidFailed(error) {
+                    $log.error('XHR Failed for isSubscriptionValid.' + error.data);
                     $interval.cancel(cancelPromise);
                 }
-            }, 20000);
+            }, 5000);
         }
 
         function subscribe(scope, callback) {
