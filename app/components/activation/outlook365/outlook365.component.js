@@ -9,9 +9,9 @@
         templateUrl: 'tracker/app/components/activation/outlook365/outlook365.view.html'
     });
 
-    Outlook365Controller.$inject = ['$scope', '$state', '$stateParams', 'angularConfig', 'angularRoutes', 'office365Config', 'office365Service'];
+    Outlook365Controller.$inject = ['$scope', '$state', '$stateParams', 'angularConfig', 'angularRoutes', 'office365Config', 'office365Service', 'redirectService'];
 
-    function Outlook365Controller($scope, $state, $stateParams, angularConfig, angularRoutes, office365Config, office365Service) {
+    function Outlook365Controller($scope, $state, $stateParams, angularConfig, angularRoutes, office365Config, office365Service, redirectService) {
         var ctrl = this;
 
         var userId = $stateParams.userId;
@@ -35,12 +35,6 @@
             var uri = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?";
 
             var popup = window.open(uri + 'client_id=' + clientId + '&scope=' + scope + '&response_type=' + response_type + '&nonce=' + nounce + '&redirect_uri=' + redirect_uri, 'AuthPopup', 'width=500,height=500,centerscreen=1,menubar=0,toolbar=0,location=0,personalbar=0,status=0,titlebar=0,dialog=1');
-            var popupTick = setInterval(function() {
-                if (popup.closed) {
-                    clearInterval(popupTick);
-                    console.log('window closed!');
-                }
-            }, 500);
 
             office365Service.isTokenValid(userId);
         };

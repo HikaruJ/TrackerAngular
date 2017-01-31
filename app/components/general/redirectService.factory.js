@@ -7,7 +7,7 @@
     redirectService.$inject = ['$log', '$state', 'angularRoutes'];
 
     function redirectService($log, $state, angularRoutes) {
-        var idigimaTokenValid, outlook365SubscriptionValid, userExists, userId;
+        var idigimaTokenValid, outlook365TokenValid, userExists, userId;
 
         var service = {
             processActivationFlowResult: processActivationFlowResult,
@@ -25,7 +25,7 @@
                 $state.go(angularRoutes.home, { showError: true });
             } else {
                 idigimaTokenValid = Boolean(activationFlowResult.idigimaTokenValid);
-                outlook365SubscriptionValid = Boolean(activationFlowResult.outlook365SubscriptionValid);
+                outlook365TokenValid = Boolean(activationFlowResult.outlook365TokenValid);
                 userExists = Boolean(activationFlowResult.userExists);
                 userId = activationFlowResult.userId;
             }
@@ -33,16 +33,16 @@
 
         //Check the Activation flow result parameters and redirect accordingly from the home page
         function redirectFromHome() {
-            if (idigimaTokenValid && outlook365SubscriptionValid & userExists) {
+            if (idigimaTokenValid && outlook365TokenValid & userExists) {
                 $state.go(angularRoutes.activated, { userId: userId });
                 return true;
-            } else if (!idigimaTokenValid && !outlook365SubscriptionValid & userExists) {
+            } else if (!idigimaTokenValid && !outlook365TokenValid & userExists) {
                 $state.go(angularRoutes.idigima, { userId: userId });
                 return true;
-            } else if (!idigimaTokenValid && outlook365SubscriptionValid & userExists) {
+            } else if (!idigimaTokenValid && outlook365TokenValid & userExists) {
                 $state.go(angularRoutes.idigima, { userId: userId });
                 return true;
-            } else if (idigimaTokenValid && !outlook365SubscriptionValid & userExists) {
+            } else if (idigimaTokenValid && !outlook365TokenValid & userExists) {
                 $state.go(angularRoutes.outlook365, { userId: userId });
                 return true;
             } else {
@@ -52,7 +52,7 @@
 
         //Check the Activation flow result parameters and redirect accordingly from the idigima login page
         function redirectFromIDigima() {
-            if (outlook365SubscriptionValid) {
+            if (outlook365TokenValid) {
                 $state.go(angularRoutes.activated, { userId: userId });
             } else {
                 $state.go(angularRoutes.outlook365, { userId: userId });

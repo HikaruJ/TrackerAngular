@@ -10,17 +10,17 @@
         var cancelPromise;
 
         var urls = {
-            isSubscriptionValid: '/office365/isSubscriptionValid'
+            isTokenValid: '/office365/isTokenValid'
         };
 
         var service = {
-            isSubscriptionValid: isSubscriptionValid,
+            isTokenValid: isTokenValid,
             subscribe: subscribe
         };
 
         return service;
 
-        function isSubscriptionValid(userId) {
+        function isTokenValid(userId) {
             cancelPromise = $interval(function() {
                 var data = {
                     userId: userId
@@ -28,7 +28,7 @@
 
                 var request = {
                     method: 'POST',
-                    url: angularConfig.serverUrl + urls.isSubscriptionValid,
+                    url: angularConfig.serverUrl + urls.isTokenValid,
                     data: $httpParamSerializerJQLike(data),
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -36,10 +36,10 @@
                 };
 
                 $http(request)
-                    .then(isSubscriptionValidComplete)
-                    .catch(isSubscriptionValidFailed);
+                    .then(isTokenValidComplete)
+                    .catch(isTokenValidFailed);
 
-                function isSubscriptionValidComplete(response) {
+                function isTokenValidComplete(response) {
                     if (response.data !== null && response.data !== undefined) {
                         var data = response.data;
                         if (data.isValid) {
@@ -53,8 +53,8 @@
                     }
                 }
 
-                function isSubscriptionValidFailed(error) {
-                    $log.error('XHR Failed for isSubscriptionValid.' + error.data);
+                function isTokenValidFailed(error) {
+                    $log.error('XHR Failed for isTokenValid.' + error.data);
                     $interval.cancel(cancelPromise);
                 }
             }, 5000);
